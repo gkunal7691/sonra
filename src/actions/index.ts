@@ -10,3 +10,9 @@ export const storeSearchResponse=(data:any)=>{
         payload: data,
     }
 }
+export const storePage=(inputValue:number)=>{
+    return {
+        type:"STORE_PAGE_NUMBER",
+        payload: inputValue,
+    }
+}

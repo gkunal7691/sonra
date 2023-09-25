@@ -4,7 +4,8 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import { Pagination } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { storeOnChange } from "../actions/index";
+import { storeOnChange,storePage } from "../actions/index";
+
 
 export default function Layout() {
   const [searchQuery, setSearchQuery] = useState("calculus");
@@ -12,12 +13,13 @@ export default function Layout() {
   const [loader, setLoader] = useState(false);
   const [isHistoryVisible, setIsHistoryVisible] = useState(false);
   const [searchHistory, setSearchHistory] = useState([]);
-
+  const myPage = useSelector((state: any) => state.storeThePage);
   const dispatch = useDispatch();
   const handleSearchInputChange = (e: any) => {
     const inputValue = e.target.value;
     setSearchQuery(inputValue);
     dispatch(storeOnChange(inputValue));
+    dispatch(storePage(1))
   };
   return (
     <div className="App h-100">
@@ -48,7 +50,7 @@ export default function Layout() {
       </header>
       <Home
         searchQuery={searchQuery}
-        page={page}
+        page={myPage}
         loader={loader}
         setLoader={setLoader}
         setSearchHistory={setSearchHistory}
@@ -58,12 +60,12 @@ export default function Layout() {
         <div className="d-flex ">
           <Pagination>
             <Pagination.Prev
-              onClick={() => page > 1 && setPage(page - 1)}
+              onClick={() => myPage > 1 && dispatch(storePage(myPage-1))}
               disabled={loader}
             />
-            <Pagination.Item>{page}</Pagination.Item>
+            <Pagination.Item>{myPage}</Pagination.Item>
             <Pagination.Next
-              onClick={() => setPage(page + 1)}
+              onClick={() => dispatch(storePage(myPage+1))}
               disabled={loader}
             />
           </Pagination>

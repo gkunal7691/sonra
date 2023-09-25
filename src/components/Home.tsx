@@ -40,8 +40,10 @@ export default function Home({
   };
 
 
+  
+
   useEffect(() => {
-    if(!mySearchedData ||(mySearchedData && mySearchedData.q !== myState )){
+    if(!mySearchedData ||(mySearchedData &&( mySearchedData.q !== myState || mySearchedData.offset !== (page-1)*8))){
     const getData = setTimeout(() => {
       getSeachedBookList();
       const storedHistory = localStorage.getItem("searchHistory");

@@ -14,14 +14,24 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #173673;
+  height: 10vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
   color: white;
+  width: 100%;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2) ;
+  z-index: 1;
+}
+.footerContainer{
+  position: sticky;
+  bottom: 0;
 }
 
 .App-link {
@@ -35,4 +45,50 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.mainContainer {
+  width: 85%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  min-height: 100vh;
+  gap: 20px;
+  margin: auto;
+  @media (max-width: 768px) {
+    grid-template-columns:repeat(1, 1fr);; /* Change to a single column layout for phones */
+  }
+
+}
+.spinnerDiv{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 80vh;
+}
+.inputContainer{
+  position: relative;
+  @media (max-width: 768px) {
+    width:100% !important/* Change to a single column layout for phones */
+  }
+}
+.searchHistory{
+  position:absolute;
+  top:40px;
+  background: white;
+  font-size: small;
+  color:#173673;
+  border: 2px solid #173673;
+  width: 100%;
+  border-radius: 4px;
+}
+.searchListItem{
+  border-bottom-width: 1px solid #173673;
+}
+.spinnerContainer{
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
